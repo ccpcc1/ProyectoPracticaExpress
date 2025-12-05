@@ -1,0 +1,63 @@
+# -----------------------------
+# Maven
+# -----------------------------
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+# -----------------------------
+# Eclipse
+# -----------------------------
+.classpath
+.project
+.settings/
+.metadata/
+
+# -----------------------------
+# IntelliJ IDEA
+# -----------------------------
+.idea/
+*.iml
+*.iws
+
+# -----------------------------
+# VS Code
+# -----------------------------
+.vscode/
+
+# -----------------------------
+# Logs
+# -----------------------------
+*.log
+
+# -----------------------------
+# Sistema Operativo
+# -----------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# -----------------------------
+# Archivos temporales / backups
+# -----------------------------
+*.tmp
+*.bak
+*.swp
+*.swo
+*.orig
+
+# -----------------------------
+# Otros
+# -----------------------------
+# Ignorar dumps de JVM
+hs_err_pid*
+replay_pid*
