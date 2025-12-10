@@ -1,7 +1,7 @@
-#language: es
-Característica: : Inicio de sesión exitosos
+#language: en
+Feature:Log in Succesfull
 
-Escenario: Inicio de sesión exitoso
-  Dado que haya ingresado correctamente a la página web
-  Cuando se ingresan las credeciales correctamente
-  Entonces deberá de mostrarse la página de inicio del usuario correctamente
+Scenario: Log in Successfully
+  Given open the website successfully
+  When the user enter the credentials
+  Then the user should see the home page successfully

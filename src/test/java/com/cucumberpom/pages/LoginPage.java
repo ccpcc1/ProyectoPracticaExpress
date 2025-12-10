@@ -21,5 +21,12 @@ public class LoginPage extends BaseTest {
         PageFactory.initElements(webDriver,this);
     }
 
+    public void  UserEnterCredential(){
+
+    }
+
+    public void UserVerifyStayOnHomePage(){
+
+    }
 
 }
