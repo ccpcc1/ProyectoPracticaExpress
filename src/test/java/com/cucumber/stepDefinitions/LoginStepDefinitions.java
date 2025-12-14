@@ -1,4 +1,4 @@
-package com.stepDefinitions;
+package com.cucumber.stepDefinitions;
 
 import com.cucumberpom.base.BaseTest;
 import com.cucumberpom.pages.LoginPage;

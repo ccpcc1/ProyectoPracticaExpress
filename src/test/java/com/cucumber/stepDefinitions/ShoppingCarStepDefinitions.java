@@ -1,25 +1,25 @@
-package com.stepDefinitions;
+package com.cucumber.stepDefinitions;
 
 import com.cucumberpom.base.BaseTest;
 import io.cucumber.java.en.Then;
-import com.cucumberpom.pages.ShoppingCarPage;
+import com.cucumberpom.pages.ShoppingHomePage;
 public class ShoppingCarStepDefinitions extends BaseTest {
 
-    ShoppingCarPage shoppingCarPage= new ShoppingCarPage();
+    ShoppingHomePage shoppingHomePage= new ShoppingHomePage();
 
     @Then("^the user add items to the shooping Car")
     public void theUserAddItemsToTheShoopingCar(){
 
-        shoppingCarPage.addItemsToShoppingCar();
+        shoppingHomePage.addItemsToShoppingCar();
     }
     @Then("^the user buy the items in the shopping car")
     public void theUserBuyTheItemsInTheShoopingCart(){
-        shoppingCarPage.buyTheItemsInShoppingCart();
+        shoppingHomePage.buyTheItemsInShoppingCart();
     }
 
     @Then("^the user shold see the items bought")
     public void theUserShouldSeeTheItemBought(){
-        shoppingCarPage.SeeItemsBought();
+        shoppingHomePage.SeeItemsBought();
     }
 
 }
