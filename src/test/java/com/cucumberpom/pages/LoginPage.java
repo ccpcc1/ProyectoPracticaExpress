@@ -53,7 +53,7 @@ public class LoginPage extends BaseTest {
         wait.until(ExpectedConditions.visibilityOf(userName)).sendKeys(user);
         wait.until(ExpectedConditions.visibilityOf(userPassword)).sendKeys(password);
         wait.until(ExpectedConditions.visibilityOf(buttonLogin)).click();
-        Thread.sleep(5000);
+        Thread.sleep(1000);
     }
 
 }

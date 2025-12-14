@@ -7,7 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtility {
 
-    public static Map<String,String> getDataAndMarkRow(String routeFile,String sheet){
+    public static Map<String,String> getDataRecord(String routeFile, String sheet){
         Map<String,String> rowReader= new HashMap<>();
         try{
             FileInputStream fileInputStream= new FileInputStream(routeFile);
@@ -18,7 +18,7 @@ public class ExcelUtility {
 
             Row header = sheetReader.getRow(0);
             //change name
-            short colStatus=getColumnIndex(header,"Estado");
+            short colStatus=getColumnIndex(header,"Status");
             if (colStatus==-1){
                 System.err.println("Doesn't found the status column");
                 return rowReader;
@@ -34,14 +34,14 @@ public class ExcelUtility {
                 statusCell.setCellType(CellType.STRING);
                 String status=statusCell.getStringCellValue().trim(); //get status column value
                 
-                if (status.trim().equalsIgnoreCase("Disponible")){
-                    for (int j = 0; j <row.getLastCellNum() ; j++) {
+                if (status.trim().equalsIgnoreCase("Avaible")) {
+                    for (int j = 0; j < row.getLastCellNum(); j++) {
                         String key = header.getCell(j).getStringCellValue().trim();
-                        Cell cellValue= row.getCell(j);
+                        Cell cellValue = row.getCell(j);
                         if (cellValue == null) continue;
                         cellValue.setCellType(CellType.STRING);
-                        String value=cellValue.getStringCellValue().trim();
-                        rowReader.put(key,value);
+                        String value = cellValue.getStringCellValue().trim();
+                        rowReader.put(key, value);
                     }
                     break;
                 }
@@ -67,31 +67,29 @@ public class ExcelUtility {
         try (FileInputStream fis = new FileInputStream(new File(routeFile));
              Workbook workbook = new XSSFWorkbook(fis)) {
             Sheet sheet = workbook.getSheetAt(0);
-            Row encabezado = sheet.getRow(0);
-            int colEstado = -1;
+            Row header = sheet.getRow(0);
+            int columnStatus = -1;
 
-            for (int i = 0; i < encabezado.getLastCellNum(); i++) {
-                Cell cell = encabezado.getCell(i);
-                if (cell != null && cell.getStringCellValue().trim().equalsIgnoreCase("Estado")) {
-                    colEstado = i;
+            for (int i = 0; i < header.getLastCellNum(); i++) {
+                Cell cell = header.getCell(i);
+                if (cell != null && cell.getStringCellValue().trim().equalsIgnoreCase("Status")) {
+                    columnStatus = i;
                     break;
                 }
             }
-
-            if (colEstado == -1)
+            if (columnStatus == -1)
                 return;
-
             for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-                Row fila = sheet.getRow(i);
-                if (fila == null)
+                Row row = sheet.getRow(i);
+                if (row == null)
                     continue;
-                Cell estadoCell = fila.getCell(colEstado);
-                if (estadoCell == null)
+                Cell cellStatus = row.getCell(columnStatus);
+                if (cellStatus == null)
                     continue;
-                estadoCell.setCellType(CellType.STRING);
-                String estado = estadoCell.getStringCellValue().trim();
-                if ("Disponible".equalsIgnoreCase(estado)) {
-                    estadoCell.setCellValue("Usado");
+                cellStatus.setCellType(CellType.STRING);
+                String status = cellStatus.getStringCellValue().trim();
+                if ("Avaible".equalsIgnoreCase(status)) {
+                    cellStatus.setCellValue("Used");
 
                     try (FileOutputStream fos = new FileOutputStream(new File(routeFile))) {
                         workbook.write(fos);
@@ -103,7 +101,5 @@ public class ExcelUtility {
             e.printStackTrace();
         }
     }
-
-
 
 }
