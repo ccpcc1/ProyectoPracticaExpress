@@ -24,12 +24,12 @@ public class LoginStepDefinitions extends BaseTest {
     }
 
     @When("^the user enter the credentials")
-    public void theUserEnterTheCredentials(){
+    public void theUserEnterTheCredentials() throws InterruptedException {
         loginPage.UserEnterCredential();
     }
 
     @Then("^the user should see the home page successfully")
-    public void theUserShouldSeeTheHomePageSuccessfull(){
+    public void theUserShouldSeeTheHomePageSuccessfull() throws InterruptedException {
        loginPage.UserVerifyStayOnHomePage();
     }
 
