@@ -1,7 +1,13 @@
 package com.cucumberpom.base;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -26,6 +32,19 @@ public class BaseTest {
         }
 
     }
+    public void takeScreenshot(WebDriver driver, String nombre) throws IOException {
+        try {
+            File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            File dest = new File("screenshots/" + nombre + ".png");
+            FileUtils.copyFile(src, dest);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void initBrowser(){
         String modo= System.getProperty("execMode");
         String browser=properties.getProperty("browser");

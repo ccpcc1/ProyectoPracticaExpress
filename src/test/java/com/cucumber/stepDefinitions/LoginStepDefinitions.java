@@ -8,6 +8,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.io.IOException;
+
 public class LoginStepDefinitions extends BaseTest {
     LoginPage loginPage;
 
@@ -24,12 +26,12 @@ public class LoginStepDefinitions extends BaseTest {
     }
 
     @When("^the user enter the credentials")
-    public void theUserEnterTheCredentials() throws InterruptedException {
+    public void theUserEnterTheCredentials() throws InterruptedException, IOException {
         loginPage.UserEnterCredential();
     }
 
     @Then("^the user should see the home page successfully")
-    public void theUserShouldSeeTheHomePageSuccessfull() throws InterruptedException {
+    public void theUserShouldSeeTheHomePageSuccessfull() throws InterruptedException, IOException{
        loginPage.UserVerifyStayOnHomePage();
     }
 

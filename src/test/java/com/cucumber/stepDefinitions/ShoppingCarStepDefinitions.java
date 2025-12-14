@@ -5,6 +5,9 @@ import com.cucumberpom.pages.ShoppingCarPage;
 import io.cucumber.java.After;
 import io.cucumber.java.en.Then;
 import com.cucumberpom.pages.ShoppingHomePage;
+
+import java.io.IOException;
+
 public class ShoppingCarStepDefinitions extends BaseTest {
 
     ShoppingHomePage shoppingHomePage= new ShoppingHomePage();
@@ -16,13 +19,13 @@ public class ShoppingCarStepDefinitions extends BaseTest {
         shoppingHomePage.addItemsToShoppingCar();
     }
     @Then("^the user buy the items in the shopping car")
-    public void theUserBuyTheItemsInTheShoopingCart()throws InterruptedException{
+    public void theUserBuyTheItemsInTheShoopingCart()throws InterruptedException, IOException{
 
         shoppingCarPage.buyTheItemsInShoppingCart();
     }
 
     @Then("^the user shold see the items bought")
-    public void theUserShouldSeeTheItemBought()throws InterruptedException{
+    public void theUserShouldSeeTheItemBought()throws InterruptedException, IOException {
         shoppingCarPage.SeeItemsBought();
     }
 

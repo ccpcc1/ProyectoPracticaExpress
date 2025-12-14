@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Map;
 
@@ -42,7 +43,7 @@ public class ShoppingCarPage extends BaseTest{
         PageFactory.initElements(webDriver,this);
     }
 
-    public void buyTheItemsInShoppingCart() throws InterruptedException{
+    public void buyTheItemsInShoppingCart() throws InterruptedException, IOException {
         String route="src/test/resources/data.xlsx";
         String sheetName="Shopping car";
         Map<String,String> data= ExcelUtility.getDataRecord(route,sheetName);
@@ -52,6 +53,7 @@ public class ShoppingCarPage extends BaseTest{
 
         try{
             wait.until(ExpectedConditions.visibilityOf(shoppingCarButton)).click();
+            this.takeScreenshot(webDriver,"shopping car");
             wait.until(ExpectedConditions.visibilityOf(checkoutButton)).click();
             wait.until(ExpectedConditions.visibilityOf(firstNameField)).sendKeys(firstName);
             wait.until(ExpectedConditions.visibilityOf(lastNameField)).sendKeys(lastName);
@@ -66,11 +68,12 @@ public class ShoppingCarPage extends BaseTest{
 
     }
 
-    public void SeeItemsBought(){
+    public void SeeItemsBought() throws  IOException{
         try {
             String spectedText="Thank you for your order!";
             WebElement succesMessage = webDriver.findElement(By.className("complete-header"));
             String actalMessage=succesMessage.getText();
+            this.takeScreenshot(webDriver,"success buy");
             Assert.assertEquals(spectedText, actalMessage);
             Thread.sleep(3000);
         }

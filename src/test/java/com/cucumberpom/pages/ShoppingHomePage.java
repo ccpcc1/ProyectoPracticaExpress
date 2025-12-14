@@ -31,6 +31,7 @@ public class ShoppingHomePage extends BaseTest {
             if(itemName!="all"){
                 WebElement itemNameButton=wait.until(ExpectedConditions.presenceOfElementLocated(By.id(getIdButtomItem(itemName))));
                 itemNameButton.click();
+
             }else
             {
                 //add all items using the same class
